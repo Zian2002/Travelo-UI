@@ -18,10 +18,11 @@ function Cards() {
 
   return (
     <div className="cards">
-      <h1>Khám phá những tour du lịch nổi bậc</h1>
+      <h1> Khám phá những tour du lịch nổi bậc </h1>{" "}
       <div className="cards__container">
         <div className="cards__wrapper">
           <ul className="cards__items">
+            {" "}
             {data.map((item, index) => {
               return (
                 <CardItem
@@ -32,10 +33,10 @@ function Cards() {
                   path="/services/activity"
                 ></CardItem>
               );
-            })}
-          </ul>
-        </div>
-      </div>
+            })}{" "}
+          </ul>{" "}
+        </div>{" "}
+      </div>{" "}
     </div>
   );
 }
