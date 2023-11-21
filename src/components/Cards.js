@@ -7,7 +7,7 @@ function Cards() {
   const api_url = "http://localhost:8084/tour";
   const getData = async () => {
     const response = await axios.get(api_url);
-    console.log(response, response);
+    // console.log("response", response);
     setData(response.data);
   };
   useEffect(() => {
@@ -18,19 +18,19 @@ function Cards() {
 
   return (
     <div className="cards">
-      <h1> Khám phá những tour du lịch nổi bậc </h1>{" "}
+      <h1> Khám phá những tour du lịch nổi bậc </h1>
       <div className="cards__container">
         <div className="cards__wrapper">
           <ul className="cards__items">
-            {" "}
             {data.map((item, index) => {
               return (
                 <CardItem
                   key={index}
-                  src="img-9.jpg"
+                  tourId={item.id}
+                  src={item.tourInfo.images[0].imageUri}
                   text={item.tourInfo.name}
                   label={item.tourInfo.location.province}
-                  path="/services/activity"
+                  path="/services/tour"
                 ></CardItem>
               );
             })}{" "}

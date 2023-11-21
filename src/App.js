@@ -11,7 +11,6 @@ import Register from "./components/pages/Register";
 import User from "./components/pages/User";
 
 function App() {
-
   return (
     <div className="App">
       <Navbar />
@@ -20,8 +19,8 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/services" exact element={<Services />} />
           <Route path="/user" exact element={<User />} />
-          <Route path="/sign-up" exact element={<Login />} />
-          <Route path="/services/activity" element={<Destination />} />
+          <Route path="/sign-in" exact element={<Login />} />
+          <Route path="/services/tour/:id" element={<Destination />} />
           <Route path="/register" exact element={<Register />} />
         </Routes>
       </ScrollToTop>

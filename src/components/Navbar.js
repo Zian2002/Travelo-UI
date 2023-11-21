@@ -2,27 +2,40 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import "./Navbar.css";
+import axios from "axios";
 
 function Navbar() {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
+  const [login, setLogin] = useState(false);
+  const [token, seToken] = useState(localStorage.getItem("token") || "");
+  const [email, setEmail] = useState();
+  const [user, setUser] = useState({});
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
+  // console.log("token", localStorage.getItem("token"));
+  const getUserData = async () => {
+    try {
+      if (token) {
+        axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+      } else {
+        setLogin(false);
+      }
+
+      const result = await axios.get(
+        "http://localhost:8084/customer/detail-person"
+      );
+
+      setUser(result.data);
+      setLogin(true);
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
   useEffect(() => {
-    showButton();
+    getUserData();
   }, []);
-
-  window.addEventListener("resize", showButton);
 
   return (
     <>
@@ -51,14 +64,23 @@ function Navbar() {
                 Dịch vụ
               </Link>
             </li>
-            
           </ul>
           {/* this is the children of Button component that has a buttonStyle */}
-          {!button ? (
+          {!login ? (
             <Button buttonStyle="btn--outline">Sign Up</Button>
           ) : (
-            <div style={{}}>
-              <Link style={{color : "#fff", fontSize : 17, fontWeight : "bold", textDecoration : "none"}} to={"/user"}>User</Link>
+            <div>
+              <Link
+                style={{
+                  color: "#fff",
+                  fontSize: 17,
+                  fontWeight: "bold",
+                  textDecoration: "none",
+                }}
+                to={"/user"}
+              >
+                {user.email}
+              </Link>
             </div>
           )}
         </div>

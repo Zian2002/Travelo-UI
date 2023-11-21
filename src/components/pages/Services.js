@@ -10,9 +10,15 @@ import axios from "axios";
 export default function Services() {
   const api_url = "http://localhost:8084/tour";
   const location_api = "http://localhost:8084/location";
+  const images = [
+    "http://localhost:8084/image/danang1.png",
+    "http://localhost:8084/image/thacbangioc1.png",
+    "http://localhost:8084/image/dongnai2.png",
+    "http://localhost:8084/image/dalat2.png",
+  ];
   const getData = async () => {
     const response = await axios.get(api_url);
-    console.log(response, response);
+    console.log("response", response);
     setData(response.data);
 
     const locationResponse = await axios.get(location_api);
@@ -34,13 +40,15 @@ export default function Services() {
           <div className="services-wrapper">
             <ul className="services-items">
               {data.map((item, index) => {
+                const images = item.tourInfo.images[0];
                 return (
                   <CardItem
                     key={index}
-                    src="img-9.jpg"
+                    tourId={item.id}
+                    src={images.imageUri}
                     text={item.tourInfo.name}
                     label={item.tourInfo.location.province}
-                    path="/services/activity"
+                    path="/services/tour"
                   ></CardItem>
                 );
               })}
@@ -54,15 +62,27 @@ export default function Services() {
         <div className="services-container">
           <div className="services-wrapper">
             <ul className="services-items">
-              {location.map((item, index) => {
+              {location.slice(2, 6).map((item, index) => {
                 return (
-                  <CardItem
-                    key={index}
-                    src="destination-1.jpg"
-                    text={item.description}
-                    label={item.province}
-                    path="/services/activity"
-                  ></CardItem>
+                  <li className="cards__item" key={index}>
+                    <div className="cards__item__link">
+                      <figure
+                        data-category={item.province}
+                        className="cards__item__pic-wrap"
+                      >
+                        <img
+                          src={images[0]}
+                          alt="Travel destination"
+                          className="cards__item__img"
+                        ></img>
+                      </figure>
+                      <div className="cards__item__info">
+                        <h5 className="cards__item__text">
+                          {item.description}
+                        </h5>
+                      </div>
+                    </div>
+                  </li>
                 );
               })}
             </ul>

@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // props will be coming from Cards.js
 function CardItem(props) {
+  // console.log(props);
   return (
     <li className="cards__item">
-      <Link to={props.path} className="cards__item__link">
+      <NavLink
+        to={props.path ? `${props.path}/${props.tourId}` : ""}
+        className="cards__item__link"
+      >
         <figure data-category={props.label} className="cards__item__pic-wrap">
           <img
-            src={`images/${props.src}`}
+            src={`${props.src}`}
             alt="Travel destination"
             className="cards__item__img"
           ></img>
@@ -16,7 +20,7 @@ function CardItem(props) {
         <div className="cards__item__info">
           <h5 className="cards__item__text">{props.text}</h5>
         </div>
-      </Link>
+      </NavLink>
     </li>
   );
 }
