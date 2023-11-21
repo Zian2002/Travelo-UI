@@ -23,7 +23,6 @@ h1 {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-
 }
 
 .cards__items {
@@ -35,8 +34,9 @@ h1 {
   flex: 1;
   margin: 0 1rem;
   border-radius: 10px;
-  min-width: 22%;
   width: 22% !important;
+  min-width: 22%;
+  max-width: 22%;
   margin-bottom: 1rem;
 }
 
