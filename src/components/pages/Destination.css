@@ -1,0 +1,134 @@
+.destination {
+  background-image: url("../../../public/images/img-9.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  height: 350px;
+}
+
+.destination-container {
+  padding: 4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.destination-container h2 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.destination-container p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  max-width: 800px;
+}
+
+.info-wrapper {
+  max-width: 800px;
+}
+
+.destination-container .tour-desc {
+  font-weight: normal;
+  font-size: 33px;
+}
+
+.destination-container .info-item {
+  display: flex;
+}
+
+.destination-container .info-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.destination-container .info-value {
+  font-weight: normal;
+  margin-left: 10px;
+  color: #260707;
+}
+
+.booking-container {
+  width: 500px;
+  height: fit-content;
+  padding: 1.4rem;
+  border: 2px solid #242424;
+  border-radius: 5px;
+}
+
+.booking-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.booking-title {
+  font-weight: bold;
+  font-size: 50;
+  margin-bottom: 20px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.input-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.booking-label {
+  width: 40%;
+}
+
+.booking-input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: 1px solid #333;
+  padding: 0 10px;
+  border-radius: 15px;
+}
+
+.booking-input:focus {
+  border-color: red;
+}
+
+.booking-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  background-color: blue;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 auto;
+  display: inline-block;
+  height: 50px;
+  border-radius: 20px;
+  border: none;
+}
+
+.require {
+  color: red;
+  width: 20px;
+  margin-left: 5px;
+}
+
+.error {
+  color: red;
+}
